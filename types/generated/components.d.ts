@@ -1,5 +1,23 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface SharedBody extends Schema.Component {
+  collectionName: 'components_shared_bodies';
+  info: {
+    displayName: 'body';
+    icon: 'bold';
+    description: '';
+  };
+  attributes: {
+    cke: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+  };
+}
+
 export interface SharedMedia extends Schema.Component {
   collectionName: 'components_shared_media';
   info: {
@@ -65,6 +83,7 @@ export interface SharedSlider extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'shared.body': SharedBody;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;
