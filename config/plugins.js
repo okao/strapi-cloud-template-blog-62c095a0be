@@ -1,13 +1,14 @@
-module.exports = () => ({
+module.exports = ({ env }) => ({
   graphql: {
+    enabled: true,
     config: {
       endpoint: "/graphql",
       shadowCRUD: true,
-      playgroundAlways: false,
-      depthLimit: 7,
-      amountLimit: 100,
+      playgroundAlways: true,
+      defaultLimit: 10,
+      maxLimit: 20,
       apolloServer: {
-        tracing: false,
+        tracing: true,
       },
     },
   },
